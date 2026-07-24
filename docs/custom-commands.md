@@ -9,6 +9,7 @@ Custom commands are preset AI prompts you define once and reuse on any note or s
 A custom command is like a template prompt. You write an instruction (with optional variables) and save it. From then on, you can apply it to any note or selected text with a single click.
 
 **Examples of what you might create:**
+
 - "Summarize this note in bullet points"
 - "Extract all action items as a task list"
 - "Rewrite this in a more formal tone"
@@ -55,6 +56,7 @@ Inside your prompt, you can use variables that get replaced with real content wh
 > **Important**: Tags in `{#tag1, #tag2}` must be in the note's **properties (frontmatter)**, not inline tags within the note body.
 
 **Example — quiz generator using two variables:**
+
 ```
 Come up with multiple choice questions using {activeNote}, and follow
 the format of {[[Quiz Template]]} to start a quiz session.
@@ -65,11 +67,13 @@ Repeat until the user says STOP.
 ```
 
 **Example — comparison using specific notes:**
+
 ```
 Compare my notes on {[[Product Roadmap]]} and {[[Competitor Analysis]]} and identify gaps.
 ```
 
 **Example — acting on selected text:**
+
 ```
 Rewrite this in a more formal tone: {selected_text}
 ```
@@ -83,6 +87,7 @@ Variable substitution must be enabled in **Settings → Copilot → Command → 
 ### From the Right-Click Context Menu
 
 If a command has **Show in context menu** enabled:
+
 1. Select some text in a note (optional)
 2. Right-click to open the context menu
 3. Hover over **Copilot** → select your command

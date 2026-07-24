@@ -1,27 +1,28 @@
 ---
-name: Relatório de Bug (pt-BR)
-about: Crie um relatório para nos ajudar a corrigir um problema
-title: '[BUG] '
-labels: ''
-assignees: ''
-
+name: Bug report
+about: Create a report to help us improve
+title: ""
+labels: ""
+assignees: ""
 ---
 
-**Descreva o bug**
-Uma descrição clara e concisa do que é o problema.
+- [ ] Disable all other plugins besides Copilot **(required)**
+- [ ] Log file generated via "Copilot: Create Log File" command or Settings -> Advanced -> Create Log File **(required)**
+- [ ] Screenshot of note + Copilot chat pane + dev console added **(optional)**
 
-**Para Reproduzir**
-Passos para reproduzir o comportamento:
-1. Vá até '...'
-2. Clique em '....'
-3. Role até '....'
-4. Veja o erro
+Copilot version:
+Model used:
 
-**Comportamento Esperado**
-Uma descrição clara e concisa do que você esperava que acontecesse.
+(Bug reports missing the required items above will be closed)
 
-**Ambiente:**
-- SO: [ex: Windows, macOS, Linux]
-- Versão do Obsidian: [ex: 1.5.12]
-- Versão do Copilot: [ex: 2.6.0]
-- Provedor de LLM: [ex: OpenAI, Anthropic, Ollama]
+**Describe how to reproduce**
+A clear and concise description of what the bug is. Clear steps to reproduce the behavior
+
+**Expected behavior**
+A clear and concise description of what you expected to happen.
+
+**Screenshots**
+Add screenshots to help explain your problem. Please turn on debug mode in Copilot settings, turn off other plugins to leave only Copilot dev messages as necessary.
+
+**Additional context**
+Add any other context about the problem here.

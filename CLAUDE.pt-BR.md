@@ -1,3 +1,3 @@
-# Instruções para o Claude
+# CLAUDE.md
 
-Diretrizes e preferências de ambiente para interação com assistentes no repositório Obsidian Copilot.
+@AGENTS.md
