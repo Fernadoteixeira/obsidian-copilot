@@ -2,6 +2,8 @@ import { atom, createStore, useAtom } from "jotai";
 import { useAtomValue } from "jotai";
 import { UserSystemPrompt } from "@/system-prompts/type";
 import { getSettings, updateSetting } from "@/settings/model";
+import { getModelKey, setModelKey } from "@/aiParams";
+import { resolveAgentSkillModel } from "./agentSkillMetadata";
 
 // Create independent store for system prompts (similar to custom commands)
 const systemPromptsStore = createStore();
@@ -10,6 +12,7 @@ const systemPromptsStore = createStore();
 const systemPromptsAtom = atom<UserSystemPrompt[]>([]);
 const selectedPromptTitleAtom = atom<string>("");
 const disableBuiltinSystemPromptAtom = atom<boolean>(false);
+const previousModelKeyAtom = atom<string | null>(null);
 
 /**
  * React hook to get all system prompts
@@ -83,10 +86,33 @@ export function deleteCachedSystemPrompt(title: string): void {
 
 /**
  * Set the selected prompt title
+ * Handles model overrides declared in Agent Skills frontmatter
  * @param title - Title of the prompt to select
  */
 export function setSelectedPromptTitle(title: string): void {
   systemPromptsStore.set(selectedPromptTitleAtom, title);
+
+  const prompts = getCachedSystemPrompts();
+  const selectedPrompt = title ? prompts.find((p) => p.title === title) : undefined;
+  const currentModelKey = getModelKey();
+  const savedPrevious = systemPromptsStore.get(previousModelKeyAtom);
+
+  if (selectedPrompt?.model) {
+    const settings = getSettings();
+    const matchedModel = resolveAgentSkillModel(selectedPrompt.model, settings.activeModels);
+    if (matchedModel) {
+      const targetKey = `${matchedModel.name}|${matchedModel.provider}`;
+      if (savedPrevious === null) {
+        systemPromptsStore.set(previousModelKeyAtom, currentModelKey);
+      }
+      if (currentModelKey !== targetKey) {
+        setModelKey(targetKey);
+      }
+    }
+  } else if (savedPrevious !== null) {
+    setModelKey(savedPrevious);
+    systemPromptsStore.set(previousModelKeyAtom, null);
+  }
 }
 
 /**
@@ -191,6 +217,11 @@ export function initializeSessionPromptFromDefault(): void {
  * This should be called when starting a new chat or loading a chat from history
  */
 export function resetSessionSystemPromptSettings(): void {
+  const savedPrevious = systemPromptsStore.get(previousModelKeyAtom);
+  if (savedPrevious !== null) {
+    setModelKey(savedPrevious);
+    systemPromptsStore.set(previousModelKeyAtom, null);
+  }
   setDisableBuiltinSystemPrompt(false);
-  setSelectedPromptTitle("");
+  systemPromptsStore.set(selectedPromptTitleAtom, "");
 }

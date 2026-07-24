@@ -25,6 +25,21 @@ export interface UserSystemPrompt {
   modifiedMs: number;
 
   /**
+   * Optional description of the agent skill / prompt
+   */
+  description?: string;
+
+  /**
+   * Optional model override requested by the agent skill (e.g. sonnet, gpt-4o, claude-sonnet-4-6|anthropic)
+   */
+  model?: string;
+
+  /**
+   * Optional color tag (CSS name, Hex, RGB, HSL)
+   */
+  color?: string;
+
+  /**
    * Timestamp of the last time the system prompt was used
    */
   lastUsedMs: number;

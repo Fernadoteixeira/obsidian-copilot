@@ -15,6 +15,11 @@ import {
   removePendingFileWrite,
   isPendingFileWrite,
 } from "./state";
+import {
+  sanitizeAgentColor,
+  sanitizeAgentDescription,
+  sanitizeAgentModel,
+} from "./agentSkillMetadata";
 import { logWarn } from "@/logger";
 
 /**
@@ -136,12 +141,19 @@ export async function parseSystemPromptFile(file: TFile): Promise<UserSystemProm
     EMPTY_SYSTEM_PROMPT.lastUsedMs
   );
 
+  const description = sanitizeAgentDescription(frontmatter?.description);
+  const model = sanitizeAgentModel(frontmatter?.model);
+  const color = sanitizeAgentColor(frontmatter?.color);
+
   return {
     title: file.basename,
     content,
     createdMs,
     modifiedMs,
     lastUsedMs,
+    ...(description ? { description } : {}),
+    ...(model ? { model } : {}),
+    ...(color ? { color } : {}),
   };
 }
 
@@ -194,6 +206,15 @@ export async function ensurePromptFrontmatter(file: TFile, prompt: UserSystemPro
       }
       if (frontmatter[COPILOT_SYSTEM_PROMPT_LAST_USED] == null) {
         frontmatter[COPILOT_SYSTEM_PROMPT_LAST_USED] = lastUsedMs;
+      }
+      if (prompt.description && frontmatter.description == null) {
+        frontmatter.description = prompt.description;
+      }
+      if (prompt.model && frontmatter.model == null) {
+        frontmatter.model = prompt.model;
+      }
+      if (prompt.color && frontmatter.color == null) {
+        frontmatter.color = prompt.color;
       }
     });
   } finally {

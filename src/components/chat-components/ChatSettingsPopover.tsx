@@ -280,6 +280,38 @@ export function ChatSettingsPopover() {
                     </Button>
                   </div>
                 </div>
+                {(() => {
+                  const activePromptObj = prompts.find((p) => p.title === displayValue);
+                  if (
+                    !activePromptObj ||
+                    (!activePromptObj.description &&
+                      !activePromptObj.color &&
+                      !activePromptObj.model)
+                  ) {
+                    return null;
+                  }
+                  return (
+                    <div className="tw-mt-2 tw-space-y-1 tw-rounded-md tw-border tw-border-solid tw-border-border tw-p-2.5 tw-text-xs">
+                      {activePromptObj.description && (
+                        <div className="tw-text-muted">{activePromptObj.description}</div>
+                      )}
+                      <div className="tw-flex tw-items-center tw-gap-2 tw-pt-0.5">
+                        {activePromptObj.color && (
+                          <span
+                            className="tw-inline-block tw-size-2.5 tw-rounded-full"
+                            style={{ backgroundColor: activePromptObj.color }}
+                            title={`Color: ${activePromptObj.color}`}
+                          />
+                        )}
+                        {activePromptObj.model && (
+                          <span className="tw-rounded tw-bg-modifier-hover tw-px-1.5 tw-py-0.5 tw-font-mono tw-text-[11px] tw-text-muted">
+                            Model: {activePromptObj.model}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })()}
               </div>
 
               {/* Model Parameters Editor */}

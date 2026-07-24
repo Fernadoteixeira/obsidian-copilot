@@ -141,6 +141,39 @@ function SystemPromptAddModalContent({
         {errors.title && <div className="tw-text-sm tw-text-error">{errors.title}</div>}
       </div>
 
+      {/* Description Field */}
+      <div className="tw-flex tw-flex-col tw-gap-2">
+        <Label htmlFor="description">Description (Optional)</Label>
+        <Input
+          id="description"
+          placeholder="Describe what this custom agent skill does"
+          value={prompt.description || ""}
+          onChange={(e) => handleUpdate("description", e.target.value)}
+        />
+      </div>
+
+      {/* Model & Color Row */}
+      <div className="tw-flex tw-gap-4">
+        <div className="tw-flex tw-flex-1 tw-flex-col tw-gap-2">
+          <Label htmlFor="model">Model Override (Optional)</Label>
+          <Input
+            id="model"
+            placeholder="e.g. claude-sonnet-4-6|anthropic or sonnet"
+            value={prompt.model || ""}
+            onChange={(e) => handleUpdate("model", e.target.value)}
+          />
+        </div>
+        <div className="tw-flex tw-w-1/3 tw-flex-col tw-gap-2">
+          <Label htmlFor="color">Badge Color (Optional)</Label>
+          <Input
+            id="color"
+            placeholder="e.g. #22c55e"
+            value={prompt.color || ""}
+            onChange={(e) => handleUpdate("color", e.target.value)}
+          />
+        </div>
+      </div>
+
       {/* Content Field */}
       <div className="tw-flex tw-flex-col tw-gap-2">
         <Label htmlFor="content">Content</Label>
