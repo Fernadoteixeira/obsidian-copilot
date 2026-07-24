@@ -82,7 +82,7 @@ O sistema utiliza **chamada nativa de ferramentas** via `bindTools()` do LangCha
 
 ### Fluxo de Prompting CiC do localSearch
 
-- CiC: Corpus in Context https://arxiv.org/pdf/2406.13121
+- CiC: Corpus in Context <https://arxiv.org/pdf/2406.13121>
 - **Instrução Primeiro**: O `CopilotPlusChainRunner` agora monta a carga do localSearch via `buildLocalSearchInnerContent`, garantindo que a orientação de citação (ex: regras `<guidance>`) encabece o bloco XML antes de quaisquer documentos.
 - **Documentos em Seguida**: Os resultados de busca são serializados uma vez através de `formatSearchResultsForLLM`; o auxiliar simplesmente os anexa após a orientação, mantendo a seção de documentos intocada mas claramente separada.
 - **Pergunta por Último**: O `renderCiCMessage` formata o prompt final de modo que qualquer contexto preceda a consulta original do usuário; isso segue a recomendação CiC para ordenação instrução → contexto → consulta.

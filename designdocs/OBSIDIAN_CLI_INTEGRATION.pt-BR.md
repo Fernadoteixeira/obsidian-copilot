@@ -513,8 +513,8 @@ Daily/2026-03-01.md
 **Retorno Aplicável Da Entrega Procedimental Originária Da Utilidade Focada (Output - counts)**: Arquivo amarrado base de origem referenciador vinculando-se perante adequação gerada na forma atinente atrelada à quantitativos relativos na formatação originária na amarra provinda e associada contígua a submissão no (link count).
 
 ```
-Projects/roadmap.md	3
-Daily/2026-03-01.md	1
+Projects/roadmap.md 3
+Daily/2026-03-01.md 1
 ```
 
 **Retorno Aplicável Da Entrega Procedimental Originária Da Utilidade Focada (Output - total)**: Algorítmo de numeração orientada operante amarrado perante a representação originária restrita procedimental singular (Single number).
@@ -597,16 +597,16 @@ meeting-notes-2025
 **Retorno Aplicável Da Entrega Procedimental Originária Da Utilidade Focada (Output - counts)**: Foco originário operante vinculativo e amarrado à origem no destinar contido com a base de acoplamento gerando usos na via (occurrence count).
 
 ```
-Nonexistent Note	5
-Old Project Reference	2
+Nonexistent Note 5
+Old Project Reference 2
 ```
 
 **Retorno Aplicável Da Entrega Procedimental Originária Da Utilidade Focada (Output - verbose)**: Foco originário operante vinculativo e amarrado à origem no destinar contido com bases acopladas referidas nas instâncias e viés focado em arquivos fontes (`source files`).
 
 ```
-Nonexistent Note	Projects/roadmap.md
-Nonexistent Note	Daily/2026-03-01.md
-Old Project Reference	Archive/cleanup.md
+Nonexistent Note Projects/roadmap.md
+Nonexistent Note Daily/2026-03-01.md
+Old Project Reference Archive/cleanup.md
 ```
 
 **Retorno Aplicável Da Entrega Procedimental Originária Da Utilidade Focada (Output - total)**: Algorítmo de numeração orientada operante amarrado perante a representação originária restrita procedimental singular (ex., `771`).

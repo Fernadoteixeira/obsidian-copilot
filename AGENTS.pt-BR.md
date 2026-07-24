@@ -275,7 +275,7 @@ The TODO.md should be:
 - Clear enough that another developer can understand what was done
 - Comprehensive enough to serve as a migration guide
 
-### Structure Example:
+### Structure Example
 
 ```markdown
 # Development Session TODO

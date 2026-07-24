@@ -86,6 +86,7 @@ Estas @-menções especiais acionam explicitamente ferramentas no modo Copilot P
 | `@memory` | Acessa ou atualiza sua memória |
 
 Exemplo:
+
 ```
 @vault o que eu escrevi sobre aprendizado de máquina no mês passado?
 @websearch quais são as últimas mudanças no ecossistema de empacotamento do Python?

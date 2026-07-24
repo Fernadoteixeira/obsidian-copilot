@@ -21,7 +21,7 @@ Copilot Plus é uma assinatura que habilita:
 
 ### Configurando o Copilot Plus
 
-1. Obtenha uma chave de licença no seu painel em **https://www.obsidiancopilot.com/en/dashboard**
+1. Obtenha uma chave de licença no seu painel em **<https://www.obsidiancopilot.com/en/dashboard>**
 2. Vá em **Configurações → Copilot → Básico** (ou o banner do Plus nas configurações)
 3. Insira sua chave de licença no campo **Copilot Plus License Key**
 4. Os recursos são desbloqueados automaticamente
