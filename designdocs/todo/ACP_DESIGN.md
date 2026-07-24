@@ -136,7 +136,7 @@ We support this through two channels:
 - Handle `session/request_permission` with explicit approve/reject UI.
 - Default secure posture: no auto-allow by default.
 
-2. ACP fs callback channel (compatibility extension)
+1. ACP fs callback channel (compatibility extension)
 
 - Implement real `fs/readTextFile` and `fs/writeTextFile` handlers against Obsidian vault APIs.
 - Gate writes behind the same explicit permission workflow.
@@ -157,7 +157,7 @@ In `agent` mode, there are two tool lanes:
 - Agent emits `tool_call` / `tool_call_update`.
 - Copilot renders tool blocks and permission state.
 
-2. Agent Skills (context-based, agent-executed)
+1. Agent Skills (context-based, agent-executed)
 
 - Skills are **markdown files and scripts** in a user-configured folder, similar to Claude Code's skill system.
 - Copilot surfaces skill files to the agent as context. The **agent** reads and executes them — Copilot does not run tools client-side.
@@ -383,30 +383,32 @@ Extend `CopilotSettings` with ACP section:
 **Goal**: End-to-end text streaming with a single agent (Claude Code).
 
 **New files:**
-| File | Ported from reference | Description |
-|---|---|---|
-| `src/acp/ports/agent-client.port.ts` | `domain/ports/agent-client.port.ts` | IAgentClient interface |
-| `src/acp/types/agentConfig.ts` | `domain/models/agent-config.ts` | AgentConfig, BaseAgentSettings |
-| `src/acp/types/sessionUpdate.ts` | `domain/models/session-update.ts` | SessionUpdate union type |
-| `src/acp/types/promptContent.ts` | `domain/models/prompt-content.ts` | PromptContent types |
-| `src/acp/types/sessionState.ts` | `domain/models/chat-session.ts` | Mode/model state types |
-| `src/acp/types/agentError.ts` | `domain/models/agent-error.ts` | Error types |
-| `src/acp/adapters/acp.adapter.ts` | `adapters/acp/acp.adapter.ts` | Core ACP adapter (~1200 lines) |
-| `src/acp/adapters/acp-type-converter.ts` | `adapters/acp/acp-type-converter.ts` | Domain ↔ SDK types |
-| `src/acp/utils/shellUtils.ts` | `shared/shell-utils.ts` | Login shell wrapping |
-| `src/acp/utils/errorUtils.ts` | `shared/acp-error-utils.ts` | Error parsing |
-| `src/acp/session/ACPManager.ts` | new | Adapter lifecycle singleton |
-| `src/acp/components/AgentSelector.tsx` | new | Agent picker dropdown |
+
+| File                                     | Ported from reference                | Description                    |
+| ---------------------------------------- | ------------------------------------ | ------------------------------ |
+| `src/acp/ports/agent-client.port.ts`     | `domain/ports/agent-client.port.ts`  | IAgentClient interface         |
+| `src/acp/types/agentConfig.ts`           | `domain/models/agent-config.ts`      | AgentConfig, BaseAgentSettings |
+| `src/acp/types/sessionUpdate.ts`         | `domain/models/session-update.ts`    | SessionUpdate union type       |
+| `src/acp/types/promptContent.ts`         | `domain/models/prompt-content.ts`    | PromptContent types            |
+| `src/acp/types/sessionState.ts`          | `domain/models/chat-session.ts`      | Mode/model state types         |
+| `src/acp/types/agentError.ts`            | `domain/models/agent-error.ts`       | Error types                    |
+| `src/acp/adapters/acp.adapter.ts`        | `adapters/acp/acp.adapter.ts`        | Core ACP adapter (~1200 lines) |
+| `src/acp/adapters/acp-type-converter.ts` | `adapters/acp/acp-type-converter.ts` | Domain ↔ SDK types             |
+| `src/acp/utils/shellUtils.ts`            | `shared/shell-utils.ts`              | Login shell wrapping           |
+| `src/acp/utils/errorUtils.ts`            | `shared/acp-error-utils.ts`          | Error parsing                  |
+| `src/acp/session/ACPManager.ts`          | new                                  | Adapter lifecycle singleton    |
+| `src/acp/components/AgentSelector.tsx`   | new                                  | Agent picker dropdown          |
 
 **Modified files:**
-| File | Change |
-|---|---|
-| `src/aiParams.ts` | Add `InteractionMode` type + Jotai atoms |
-| `src/core/ChatManager.ts` | Add `sendAgentMessage()` method |
-| `src/components/Chat.tsx` | Branch `handleSendMessage` on interaction mode |
-| `src/components/chat-components/ChatControls.tsx` | Add mode toggle + agent selector |
-| `src/settings/model.ts` | Add ACP settings fields |
-| `package.json` | Add `@agentclientprotocol/sdk` dependency |
+
+| File                                              | Change                                         |
+| ------------------------------------------------- | ---------------------------------------------- |
+| `src/aiParams.ts`                                 | Add `InteractionMode` type + Jotai atoms       |
+| `src/core/ChatManager.ts`                         | Add `sendAgentMessage()` method                |
+| `src/components/Chat.tsx`                         | Branch `handleSendMessage` on interaction mode |
+| `src/components/chat-components/ChatControls.tsx` | Add mode toggle + agent selector               |
+| `src/settings/model.ts`                           | Add ACP settings fields                        |
+| `package.json`                                    | Add `@agentclientprotocol/sdk` dependency      |
 
 **Workload**: Largest phase. ~15 new files, ~5 modified files. The ACP adapter is the heaviest piece (~1200 lines ported from reference, adapted for Copilot patterns). Shell utils and type definitions are mostly direct ports. ACPManager and ChatManager integration are new code.
 
@@ -419,21 +421,23 @@ Extend `CopilotSettings` with ACP section:
 **Goal**: Full tool call UX — diffs, terminal output, permission prompts.
 
 **New files:**
-| File | Ported from reference | Description |
-|---|---|---|
-| `src/acp/adapters/terminal-manager.ts` | `shared/terminal-manager.ts` | Terminal lifecycle + output buffering |
-| `src/acp/components/ToolCallBlock.tsx` | new (reference has `ToolCallRenderer.tsx`) | Tool call status, kind, title, locations |
-| `src/acp/components/DiffViewer.tsx` | new (reference has `DiffBlock.tsx`) | File diff rendering |
-| `src/acp/components/TerminalOutput.tsx` | new (reference has `TerminalBlock.tsx`) | Terminal command output |
-| `src/acp/components/PermissionRequestUI.tsx` | new (reference has `PermissionRequestSection.tsx`) | Approve/deny inline buttons |
-| `src/acp/components/PlanBlock.tsx` | new (reference has `PlanBlock.tsx`) | Execution plan task list |
-| `src/acp/updates/AcpUpdateReducer.ts` | new | Routes session updates to message content |
+
+| File                                         | Ported from reference                              | Description                               |
+| -------------------------------------------- | -------------------------------------------------- | ----------------------------------------- |
+| `src/acp/adapters/terminal-manager.ts`       | `shared/terminal-manager.ts`                       | Terminal lifecycle + output buffering     |
+| `src/acp/components/ToolCallBlock.tsx`       | new (reference has `ToolCallRenderer.tsx`)         | Tool call status, kind, title, locations  |
+| `src/acp/components/DiffViewer.tsx`          | new (reference has `DiffBlock.tsx`)                | File diff rendering                       |
+| `src/acp/components/TerminalOutput.tsx`      | new (reference has `TerminalBlock.tsx`)            | Terminal command output                   |
+| `src/acp/components/PermissionRequestUI.tsx` | new (reference has `PermissionRequestSection.tsx`) | Approve/deny inline buttons               |
+| `src/acp/components/PlanBlock.tsx`           | new (reference has `PlanBlock.tsx`)                | Execution plan task list                  |
+| `src/acp/updates/AcpUpdateReducer.ts`        | new                                                | Routes session updates to message content |
 
 **Modified files:**
-| File | Change |
-|---|---|
+
+| File                                              | Change                              |
+| ------------------------------------------------- | ----------------------------------- |
 | `src/components/chat-components/ChatMessages.tsx` | Detect and render ACP content types |
-| `src/settings/model.ts` | Add `acpAutoAllowPermissions` |
+| `src/settings/model.ts`                           | Add `acpAutoAllowPermissions`       |
 
 **Workload**: Medium-heavy. ~7 new component files. TerminalManager is substantial (~500 lines from reference). UI components are mostly new but follow patterns from reference plugin. AcpUpdateReducer is new routing logic.
 
@@ -446,18 +450,20 @@ Extend `CopilotSettings` with ACP section:
 **Goal**: Full agent configuration, OpenCode model switching, mode selection.
 
 **New files:**
-| File | Description |
-|---|---|
+
+| File                                        | Description                                      |
+| ------------------------------------------- | ------------------------------------------------ |
 | `src/acp/components/AgentModelSelector.tsx` | Model dropdown populated from ACP session models |
-| `src/acp/components/AgentModeSelector.tsx` | Mode dropdown populated from ACP session modes |
-| `src/acp/components/AgentSettingsTab.tsx` | Full settings UI for agent configuration |
+| `src/acp/components/AgentModeSelector.tsx`  | Mode dropdown populated from ACP session modes   |
+| `src/acp/components/AgentSettingsTab.tsx`   | Full settings UI for agent configuration         |
 
 **Modified files:**
-| File | Change |
-|---|---|
-| `src/acp/adapters/acp.adapter.ts` | Add `setSessionMode()`, `setSessionModel()` calls |
-| `src/components/chat-components/ChatControls.tsx` | Wire model/mode selectors, connection status |
-| `src/settings/model.ts` | Add built-in agent presets, custom agent support |
+
+| File                                              | Change                                            |
+| ------------------------------------------------- | ------------------------------------------------- |
+| `src/acp/adapters/acp.adapter.ts`                 | Add `setSessionMode()`, `setSessionModel()` calls |
+| `src/components/chat-components/ChatControls.tsx` | Wire model/mode selectors, connection status      |
+| `src/settings/model.ts`                           | Add built-in agent presets, custom agent support  |
 
 **Workload**: Medium. 3 new UI components, moderate adapter additions. Settings tab is the largest piece — per-agent command/args/env/apikey editing. Model/mode selectors are small but need optimistic UI + rollback.
 
@@ -470,17 +476,19 @@ Extend `CopilotSettings` with ACP section:
 **Goal**: Skills folder discovery, index generation, always-active injection, skills browser.
 
 **New files:**
-| File | Description |
-|---|---|
+
+| File                                    | Description                                                               |
+| --------------------------------------- | ------------------------------------------------------------------------- |
 | `src/acp/context/AcpPromptAssembler.ts` | Builds prompt content: user text + mentions + skill index + active skills |
-| `src/acp/context/skillDiscovery.ts` | Scans skills folder, extracts index (filename + first-line description) |
-| `src/acp/components/SkillsBrowser.tsx` | List skills, toggle "always active" per skill |
+| `src/acp/context/skillDiscovery.ts`     | Scans skills folder, extracts index (filename + first-line description)   |
+| `src/acp/components/SkillsBrowser.tsx`  | List skills, toggle "always active" per skill                             |
 
 **Modified files:**
-| File | Change |
-|---|---|
+
+| File                            | Change                            |
+| ------------------------------- | --------------------------------- |
 | `src/acp/session/ACPManager.ts` | Inject skill context into prompts |
-| `src/settings/model.ts` | Add `acpSkillsFolderPath` setting |
+| `src/settings/model.ts`         | Add `acpSkillsFolderPath` setting |
 
 **Workload**: Medium-light. Skill discovery is straightforward filesystem scanning. AcpPromptAssembler assembles the prompt with skill index + active skill content. Browser UI is a simple list with toggles.
 
@@ -493,13 +501,15 @@ Extend `CopilotSettings` with ACP section:
 **Goal**: Real vault read/write via ACP `fs/*` callbacks for agents that use them.
 
 **New files:**
-| File | Ported from reference | Description |
-|---|---|---|
+
+| File                                | Ported from reference                | Description                          |
+| ----------------------------------- | ------------------------------------ | ------------------------------------ |
 | `src/acp/adapters/vault-adapter.ts` | `adapters/obsidian/vault.adapter.ts` | Bridges ACP fs to Obsidian vault API |
 
 **Modified files:**
-| File | Change |
-|---|---|
+
+| File                              | Change                                                                          |
+| --------------------------------- | ------------------------------------------------------------------------------- |
 | `src/acp/adapters/acp.adapter.ts` | Enable `fs.readTextFile`/`fs.writeTextFile` capabilities, wire to vault adapter |
 
 **Workload**: Light. Single adapter file. Read is simple vault file read. Write needs permission prompt before executing (reuse permission UI from Phase 2).
@@ -513,16 +523,18 @@ Extend `CopilotSettings` with ACP section:
 **Goal**: Session persistence, load/resume, session history browser.
 
 **New files:**
-| File | Description |
-|---|---|
+
+| File                                         | Description                        |
+| -------------------------------------------- | ---------------------------------- |
 | `src/acp/components/SessionHistoryModal.tsx` | Session list + load/resume actions |
 
 **Modified files:**
-| File | Change |
-|---|---|
+
+| File                              | Change                                                                    |
+| --------------------------------- | ------------------------------------------------------------------------- |
 | `src/acp/adapters/acp.adapter.ts` | Add `listSessions()`, `loadSession()`, `resumeSession()`, `forkSession()` |
-| `src/acp/session/ACPManager.ts` | Session metadata persistence, capability-gated session operations |
-| `src/settings/model.ts` | Add saved session metadata storage |
+| `src/acp/session/ACPManager.ts`   | Session metadata persistence, capability-gated session operations         |
+| `src/settings/model.ts`           | Add saved session metadata storage                                        |
 
 **Workload**: Medium. Session list/load requires adapter additions and UI. All session features are capability-gated — only show UI if agent supports them. Fork is unstable and lowest priority within this phase.
 
@@ -544,31 +556,31 @@ The following items are intentionally deferred from MVP and should be revisited 
 
 - Decide whether `@vault/@websearch/@composer/@memory` remain plain text only, or trigger skill-hint injection behavior.
 
-2. Skill file schema contract
+1. Skill file schema contract
 
 - Decide whether skills require frontmatter metadata (`name`, `description`, `alwaysActive`, `tags`) vs free-form markdown.
 
-3. Progressive disclosure algorithm
+1. Progressive disclosure algorithm
 
 - Define how skill relevance is selected (keyword, tags, manual pinning, hybrid scoring).
 
-4. Skill prompt budget limits
+1. Skill prompt budget limits
 
 - Set hard caps for skill index size and total always-active skill content injected per turn.
 
-5. Tool integration boundary
+1. Tool integration boundary
 
 - Confirm whether agent mode stays context-only for skills, or eventually allows selective client-side Copilot tool execution.
 
-6. Script safety model
+1. Script safety model
 
 - Define Copilot-level safeguards for skill scripts (trusted folders, warnings, policy prompts) in addition to agent permission flow.
 
-7. Skills scope model
+1. Skills scope model
 
 - Decide global vault-wide skills vs project/profile-specific skill sets.
 
-8. Skills folder constraints
+1. Skills folder constraints
 
 - Decide vault-relative only skills folders vs external/absolute path support.
 
