@@ -737,13 +737,13 @@ More details in the changelog:
 
 - Fix random blank screen on Copilot Chat UI
 
-* Addressed issues with extracting response text, mobile typeahead menu size, chat crashes, tool call UI freezes, and chat saving.
-* Fixed illegal saved chat file names and improved image passing with `copilot-plus-flash`.
-* Avoided unnecessary index rebuilds upon semantic search toggle changes.
-* Ensured autonomous agent workflows use consistent tool call IDs and helper orchestration.
-* Resolved issues with dropdown colors, badge borders, search result numbers, folder context, and spaces in typeahead triggers.
-* Fix model addition in "Set Keys" window. "Verification" no longer required
-* Fix verification of certain Claude models (was complaining about top p -1 before, now it works)
+- Addressed issues with extracting response text, mobile typeahead menu size, chat crashes, tool call UI freezes, and chat saving.
+- Fixed illegal saved chat file names and improved image passing with `copilot-plus-flash`.
+- Avoided unnecessary index rebuilds upon semantic search toggle changes.
+- Ensured autonomous agent workflows use consistent tool call IDs and helper orchestration.
+- Resolved issues with dropdown colors, badge borders, search result numbers, folder context, and spaces in typeahead triggers.
+- Fix model addition in "Set Keys" window. "Verification" no longer required
+- Fix verification of certain Claude models (was complaining about top p -1 before, now it works)
 
 ## Troubleshoot
 
@@ -818,7 +818,7 @@ Detailed changelog:
 
 ---
 
-# Copilot for Obsidian v3.0.0!
+# Copilot for Obsidian v3.0.0
 
 We are thrilled to announce the official release of Copilot for Obsidian v3.0.0! After months of hard work, this major update brings a new era of intelligent assistance to your Obsidian vault, focusing on enhanced AI capabilities, a new search system, and significant user experience improvements.
 
@@ -1615,7 +1615,7 @@ Indexing improvements
 Improved QA in this release! Significant upgrades to Vault QA mode coming soon.
 
 - Implement HyDE for Vault QA mode #645
-- Add Google embedding model and update langchain https://github.com/logancyang/obsidian-copilot/pull/651 by @o-mikhailovskii
+- Add Google embedding model and update langchain <https://github.com/logancyang/obsidian-copilot/pull/651> by @o-mikhailovskii
 - Bug fixes
   - System prompt in QA modes #692
   - Fix new chat not stopping streaming @Emt-lin
@@ -1626,7 +1626,7 @@ Improved QA in this release! Significant upgrades to Vault QA mode coming soon.
 
 # Release v2.6.9
 
-- @Emt-lin: enable Perplexity API with CORS on https://github.com/logancyang/obsidian-copilot/pull/673. Related issues:
+- @Emt-lin: enable Perplexity API with CORS on <https://github.com/logancyang/obsidian-copilot/pull/673>. Related issues:
   - #424
   - #431
   - #661
@@ -1662,9 +1662,9 @@ Improved QA in this release! Significant upgrades to Vault QA mode coming soon.
 
 Some UX improvements
 
-- Enable renaming of custom prompt in Edit Custom Prompt command modal https://github.com/logancyang/obsidian-copilot/pull/635
-- Revert auto-scroll as it streams behavior to scroll to bottom only when streaming is done, avoid jittery auto-scrolling, and fix up and down arrow key navigation for some corner cases https://github.com/logancyang/obsidian-copilot/pull/632
-- Fix a bug where cursor is not focused in chat input when Copilot Chat pane is toggled on https://github.com/logancyang/obsidian-copilot/pull/593
+- Enable renaming of custom prompt in Edit Custom Prompt command modal <https://github.com/logancyang/obsidian-copilot/pull/635>
+- Revert auto-scroll as it streams behavior to scroll to bottom only when streaming is done, avoid jittery auto-scrolling, and fix up and down arrow key navigation for some corner cases <https://github.com/logancyang/obsidian-copilot/pull/632>
+- Fix a bug where cursor is not focused in chat input when Copilot Chat pane is toggled on <https://github.com/logancyang/obsidian-copilot/pull/593>
 
 Welcome first-time contributor @Emt-lin
 
@@ -1832,9 +1832,9 @@ Big thanks to all community contributions!! #482, #446, #445, #441, #436
 # Release v2.5.2
 
 - Fixed a bug where frontmatter parsing was failing
-- Fix missing command https://github.com/logancyang/obsidian-copilot/issues/353
-- Add exclude filter for indexing https://github.com/logancyang/obsidian-copilot/issues/334
-- Implement a first iteration of the custom retriever https://github.com/logancyang/obsidian-copilot/issues/331
+- Fix missing command <https://github.com/logancyang/obsidian-copilot/issues/353>
+- Add exclude filter for indexing <https://github.com/logancyang/obsidian-copilot/issues/334>
+- Implement a first iteration of the custom retriever <https://github.com/logancyang/obsidian-copilot/issues/331>
 - Implement note title mention in Chat and Vault QA mode
   - Now if you type `[[` it will trigger a modal for a list of all note titles to pick from
   - In Chat mode, a direct `[[]]` note title mention sends the note content in the prompt in the background, similar to how custom prompts work.
@@ -1846,9 +1846,9 @@ Big thanks to all community contributions!! #482, #446, #445, #441, #436
 
 Bug fixes
 
-- https://github.com/logancyang/obsidian-copilot/issues/347
-- https://github.com/logancyang/obsidian-copilot/issues/342
-- https://github.com/logancyang/obsidian-copilot/issues/332
+- <https://github.com/logancyang/obsidian-copilot/issues/347>
+- <https://github.com/logancyang/obsidian-copilot/issues/342>
+- <https://github.com/logancyang/obsidian-copilot/issues/332>
 
 Re-indexing for Vault QA is recommended!
 
@@ -1856,7 +1856,7 @@ Re-indexing for Vault QA is recommended!
 
 # Release v2.5.0
 
-- Brand new Vault QA (BETA) mode! This is a highly-anticipated feature and is a big step forward toward the vision of this plugin. Huge shoutout to @AntoineDao for working with me on this! https://github.com/logancyang/obsidian-copilot/pull/285
+- Brand new Vault QA (BETA) mode! This is a highly-anticipated feature and is a big step forward toward the vision of this plugin. Huge shoutout to @AntoineDao for working with me on this! <https://github.com/logancyang/obsidian-copilot/pull/285>
   - Implement more sophisticated chunking and QA flow
   - Rename current QA to Long Note QA
   - Fix Long Note QA logic
@@ -1876,19 +1876,19 @@ Re-indexing for Vault QA is recommended!
 
 # Release v2.4.18
 
-- Fix a bug where chat context is not set correctly @Lisandra-dev https://github.com/logancyang/obsidian-copilot/pull/304
-- Enable model name, embedding provider url, embedding model name overrides for various OpenAI drop-in replacement providers like one-api etc. https://github.com/logancyang/obsidian-copilot/pull/305
-- Add encryption for API keys https://github.com/logancyang/obsidian-copilot/pull/306
-- Update Ollama context window setting instruction https://github.com/logancyang/obsidian-copilot/pull/307
+- Fix a bug where chat context is not set correctly @Lisandra-dev <https://github.com/logancyang/obsidian-copilot/pull/304>
+- Enable model name, embedding provider url, embedding model name overrides for various OpenAI drop-in replacement providers like one-api etc. <https://github.com/logancyang/obsidian-copilot/pull/305>
+- Add encryption for API keys <https://github.com/logancyang/obsidian-copilot/pull/306>
+- Update Ollama context window setting instruction <https://github.com/logancyang/obsidian-copilot/pull/307>
 
 ---
 
 # Release v2.4.17
 
-- Add filter notes by tags in "Set note context in Chat mode" command https://github.com/logancyang/obsidian-copilot/pull/291
-- Add filter notes by tags in Advanced Custom Prompt https://github.com/logancyang/obsidian-copilot/pull/296
+- Add filter notes by tags in "Set note context in Chat mode" command <https://github.com/logancyang/obsidian-copilot/pull/291>
+- Add filter notes by tags in Advanced Custom Prompt <https://github.com/logancyang/obsidian-copilot/pull/296>
 - (Chore) Remove all the different Azure model choices and leave one AZURE OPENAI to avoid confusion. The actual Azure model is set in the settings.
-- Fix a bug where model switch fails after copilot commands https://github.com/logancyang/obsidian-copilot/pull/298
+- Fix a bug where model switch fails after copilot commands <https://github.com/logancyang/obsidian-copilot/pull/298>
 
 <img width="598" alt="SCR-20240213-ugbm" src="https://github.com/logancyang/obsidian-copilot/assets/4860545/84a421c0-8952-48ad-86df-7e7f19160873">
 
@@ -1898,18 +1898,18 @@ Re-indexing for Vault QA is recommended!
 
 # Release v2.4.16
 
-- Introducing advanced custom prompt! Now custom prompts don't require a text selection, and you can compose long and complex prompts by referencing a note or a folder of notes! https://github.com/logancyang/obsidian-copilot/pull/281
+- Introducing advanced custom prompt! Now custom prompts don't require a text selection, and you can compose long and complex prompts by referencing a note or a folder of notes! <https://github.com/logancyang/obsidian-copilot/pull/281>
   <img width="500" alt="SCR-20240206-lvsy" src="https://github.com/logancyang/obsidian-copilot/assets/4860545/a4c9247c-f1ed-4fc9-b248-529fd31fc41f">
 
-- Enable setting the full LM Studio URL instead of just the port https://github.com/logancyang/obsidian-copilot/pull/283
+- Enable setting the full LM Studio URL instead of just the port <https://github.com/logancyang/obsidian-copilot/pull/283>
   <img width="698" alt="SCR-20240206-lwbg" src="https://github.com/logancyang/obsidian-copilot/assets/4860545/c6092d92-58ee-40ae-9bfc-dc4169ffd2fa">
 
 ---
 
 # Release v2.4.15
 
-- Allow sending multiple notes to the prompt with one click in Chat mode! You can specify the note context using the new Copilot command `Set note context for Chat mode` https://github.com/logancyang/obsidian-copilot/pull/265
-- Add ad-hoc custom prompt for selection. Thanks to @SeardnaSchmid https://github.com/logancyang/obsidian-copilot/pull/264
+- Allow sending multiple notes to the prompt with one click in Chat mode! You can specify the note context using the new Copilot command `Set note context for Chat mode` <https://github.com/logancyang/obsidian-copilot/pull/265>
+- Add ad-hoc custom prompt for selection. Thanks to @SeardnaSchmid <https://github.com/logancyang/obsidian-copilot/pull/264>
 
 ---
 
@@ -1966,7 +1966,7 @@ Bug fixes
 
 # Release v2.4.9
 
-- Add OpenRouterAI as a separate option in model dropdown. You can specify the actual model in the setting. OpenRouter serves free and uncensored LLMs! Visit their site to check the models available https://openrouter.ai/
+- Add OpenRouterAI as a separate option in model dropdown. You can specify the actual model in the setting. OpenRouter serves free and uncensored LLMs! Visit their site to check the models available <https://openrouter.ai/>
   <img width="590" alt="SCR-20240112-ifwi" src="https://github.com/logancyang/obsidian-copilot/assets/4860545/6f2fb27c-ab7a-4515-aefb-faf827b1a2d1">
   <img width="790" alt="SCR-20240112-igae" src="https://github.com/logancyang/obsidian-copilot/assets/4860545/3fd95b69-61b8-46b8-bad7-e8a8c1d81c65">
 
@@ -2020,7 +2020,7 @@ Bug fixes
 - Upgraded langchainJS to v0.0.212
 - Fix bugs and UX issues
   - IME for east Asian languages now does not send on Enter
-  - OpenAI proxy base URL also overrides for the embedding model https://github.com/logancyang/obsidian-copilot/issues/211
+  - OpenAI proxy base URL also overrides for the embedding model <https://github.com/logancyang/obsidian-copilot/issues/211>
   - Clearing vector store should not affect new instance creation
 
 ---
@@ -2067,14 +2067,14 @@ Bug fixes
 
 # Release v2.3.6
 
-- Add support for 3rd party OpenAI proxy (mainly for users who cannot access OpenAI directly) https://github.com/logancyang/obsidian-copilot/pull/113
+- Add support for 3rd party OpenAI proxy (mainly for users who cannot access OpenAI directly) <https://github.com/logancyang/obsidian-copilot/pull/113>
   <img width="792" alt="Screenshot 2023-07-19 at 6 13 24 PM" src="https://github.com/logancyang/obsidian-copilot/assets/4860545/2dbc14b0-103a-4b95-ab46-cd140989d072">
 
 ---
 
 # Release v2.3.5
 
-- Add command "Toggle Copilot Chat Window in Note Area" to toggle the Chat UI in the main note area. Good for consumption with smaller screens. https://github.com/logancyang/obsidian-copilot/issues/102, https://github.com/logancyang/obsidian-copilot/issues/5
+- Add command "Toggle Copilot Chat Window in Note Area" to toggle the Chat UI in the main note area. Good for consumption with smaller screens. <https://github.com/logancyang/obsidian-copilot/issues/102>, <https://github.com/logancyang/obsidian-copilot/issues/5>
 
 <img width="1575" alt="Screenshot 2023-07-13 at 3 45 50 PM" src="https://github.com/logancyang/obsidian-copilot/assets/4860545/78511cf0-6877-4595-a592-aa9d454ee716">
 
@@ -2082,16 +2082,16 @@ Bug fixes
 
 # Release v2.3.4
 
-- Fix system prompt bug https://github.com/logancyang/obsidian-copilot/issues/104
-- Set AI chat font size using global font size setting in Obsidian. The chat font is always 2px smaller than the global font size. https://github.com/logancyang/obsidian-copilot/issues/92
+- Fix system prompt bug <https://github.com/logancyang/obsidian-copilot/issues/104>
+- Set AI chat font size using global font size setting in Obsidian. The chat font is always 2px smaller than the global font size. <https://github.com/logancyang/obsidian-copilot/issues/92>
 
 ---
 
 # Release v2.3.3
 
-- Fix Stop Streaming in QA mode https://github.com/logancyang/obsidian-copilot/issues/54
-- Add Azure gpt35 16k https://github.com/logancyang/obsidian-copilot/issues/101
-- Add Azure OpenAI as an embedding provider https://github.com/logancyang/obsidian-copilot/issues/81
+- Fix Stop Streaming in QA mode <https://github.com/logancyang/obsidian-copilot/issues/54>
+- Add Azure gpt35 16k <https://github.com/logancyang/obsidian-copilot/issues/101>
+- Add Azure OpenAI as an embedding provider <https://github.com/logancyang/obsidian-copilot/issues/81>
 
 ---
 

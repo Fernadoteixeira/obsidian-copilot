@@ -278,6 +278,7 @@ If you're using the Vault QA mode (or the tool <code>@vault</code> in Plus), try
 - Ensure your Copilot indexing is up-to-date. Watch this video: [Vault Mode](https://www.youtube.com/watch?v=hBLMWE8WRFU)
 - If issues persist, run <strong>Force Re-Index</strong> or use <strong>List Indexed Files</strong> from the Command Palette to inspect what's included in the index.
 - ⚠️ <strong>Don’t switch embedding models after indexing</strong>—it can break the results.
+
 </details>
 
 <details>
@@ -342,4 +343,4 @@ Copilot Plus is a premium product of Brevilabs LLC and it is not affiliated with
 
 ## **Authors**
 
-Brevilabs Team | Email: logan@brevilabs.com | X/Twitter: [@logancyang](https://twitter.com/logancyang)
+Brevilabs Team | Email: <logan@brevilabs.com> | X/Twitter: [@logancyang](https://twitter.com/logancyang)

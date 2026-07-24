@@ -611,6 +611,14 @@ export function registerCommands(
     }
   });
 
+  addCommand(plugin, COMMAND_IDS.CLIP_ACTIVE_WEB_PAGE, async () => {
+    const { ObsidianWebIntegrationService } = await import(
+      "@/services/obsidianWebIntegrationService"
+    );
+    const service = new ObsidianWebIntegrationService(plugin.app, plugin);
+    await service.clipActiveWebViewerPage();
+  });
+
   // Add command to create a new custom command
   addCommand(plugin, COMMAND_IDS.ADD_CUSTOM_COMMAND, async () => {
     const commands = getCachedCustomCommands();

@@ -803,6 +803,7 @@ export const COMMAND_IDS = {
   CLEAR_LOG_FILE: "clear-log-file",
   DOWNLOAD_YOUTUBE_SCRIPT: "download-youtube-script",
   TRIGGER_QUICK_ASK: "trigger-quick-ask",
+  CLIP_ACTIVE_WEB_PAGE: "clip-active-web-page",
 } as const;
 
 export const COMMAND_NAMES: Record<CommandId, string> = {
@@ -831,6 +832,7 @@ export const COMMAND_NAMES: Record<CommandId, string> = {
   [COMMAND_IDS.CLEAR_LOG_FILE]: "Clear log file",
   [COMMAND_IDS.DOWNLOAD_YOUTUBE_SCRIPT]: "Download YouTube Script (plus)",
   [COMMAND_IDS.TRIGGER_QUICK_ASK]: "Quick Ask",
+  [COMMAND_IDS.CLIP_ACTIVE_WEB_PAGE]: "Clip active WebViewer page into Copilot context",
 };
 
 export type CommandId = (typeof COMMAND_IDS)[keyof typeof COMMAND_IDS];
@@ -848,6 +850,7 @@ export const COMMAND_ICONS: Partial<Record<CommandId, string>> = {
   [COMMAND_IDS.TRIGGER_QUICK_ASK]: "sparkles",
   [COMMAND_IDS.ADD_SELECTION_TO_CHAT_CONTEXT]: "text-cursor-input",
   [COMMAND_IDS.ADD_WEB_SELECTION_TO_CHAT_CONTEXT]: "globe",
+  [COMMAND_IDS.CLIP_ACTIVE_WEB_PAGE]: "paperclip",
   [COMMAND_IDS.ADD_CUSTOM_COMMAND]: "plus-circle",
   [COMMAND_IDS.APPLY_CUSTOM_COMMAND]: "play-circle",
   [COMMAND_IDS.INDEX_VAULT_TO_COPILOT_INDEX]: "refresh-cw",

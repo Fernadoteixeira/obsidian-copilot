@@ -203,6 +203,21 @@ export default class CopilotPlugin extends Plugin {
 
     registerCommands(this, undefined, getSettings());
 
+    // Register obsidian-web protocol handler (obsidian://copilot-web-clip)
+    this.registerObsidianProtocolHandler("copilot-web-clip", (params) => {
+      void (async () => {
+        try {
+          const { ObsidianWebIntegrationService } = await import(
+            "@/services/obsidianWebIntegrationService"
+          );
+          const service = new ObsidianWebIntegrationService(this.app, this);
+          await service.handleWebClipParams(params);
+        } catch (error) {
+          logError("Failed to handle obsidian-web clip protocol:", error);
+        }
+      })();
+    });
+
     // Tool initialization is now handled automatically in CopilotPlusChainRunner and AutonomousAgentChainRunner
 
     this.registerEvent(
