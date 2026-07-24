@@ -186,10 +186,13 @@ export interface CustomModel {
 }
 
 export function setModelKey(modelKey: string) {
-  settingsStore.set(modelKeyAtom, modelKey);
+  if (settingsStore?.set) {
+    settingsStore.set(modelKeyAtom, modelKey);
+  }
 }
 
 export function getModelKey(): string {
+  if (!settingsStore?.get) return "";
   return settingsStore.get(modelKeyAtom);
 }
 
